@@ -8,7 +8,7 @@ RUN CGO_ENABLED=1 GOOS=linux go install -ldflags '-linkmode external -extldflags
 FROM zenika/alpine-chrome:latest
 WORKDIR /app
 USER root
-RUN apk --no-cache add ca-certificates tini
+RUN apk --no-cache add ca-certificates@edge tini@edge
 USER chrome
 COPY --from=builder /go/bin/CookieScanner /app/
 ENTRYPOINT ["/sbin/tini", "--", "/app/CookieScanner", "server"]

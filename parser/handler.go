@@ -71,12 +71,12 @@ func (t *Task) Start() (err error) {
 		}
 
 		if chromeapp != "" {
-			if chromeapp == "headless_shell" {
-				chromeapp += " --no-sandbox"
-			} else {
-				chromeapp += " --headless"
-			}
-
+			// if chromeapp == "headless_shell" {
+			// 	chromeapp += " --no-sandbox"
+			// } else {
+			// 	chromeapp += " --headless"
+			// }
+			chromeapp += " --headless --no-sandbox "
 			chromeapp += fmt.Sprintf(" --remote-debugging-port=%d --no-default-browser-check --no-first-run --hide-scrollbars --bwsi --disable-gpu",
 				t.cfg.DebuggerPort)
 

@@ -1,0 +1,18 @@
+version: '3.5'
+services:
+    app:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        volumes:
+            - ./outputs:/var/www/outputs
+            - ./config:/app/config
+        networks:
+            - "backend"
+        ports:
+            - "9223:9223"
+        command: ["--log-level", "debug", "--classifier", "covenantsql://050cdf3b860c699524bf6f6dce28c4f3e8282ac58b0e410eb340195c379adc3a?config=./config/config.yaml"]
+
+networks:
+    backend:
+        name: cookie
